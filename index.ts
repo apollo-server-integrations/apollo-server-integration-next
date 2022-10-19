@@ -1,1 +1,1 @@
-export * from 'lib/startServerAndCreateNextHandler';
+export * from '@apollo-server-integration-next/integration/startServerAndCreateNextHandler';

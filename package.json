@@ -16,7 +16,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
-    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
     "next": "^12.3.1",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
@@ -52,7 +52,7 @@
   "version": "1.0.0",
   "wireit": {
     "build": {
-      "command": "tsc",
+      "command": "tsc -p tsconfig.build.json",
       "dependencies": [
         "check:eslint",
         "check:prettier"
