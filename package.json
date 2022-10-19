@@ -1,0 +1,87 @@
+{
+  "author": "Martin Nabhan",
+  "description": "An Apollo Server integration for use with Next.js",
+  "devDependencies": {
+    "@apollo/server": "^4.0.1",
+    "@types/node": "^18.11.2",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
+    "graphql": "^16.6.0",
+    "next": "^12.3.1",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4",
+    "wireit": "^0.7.2"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "license": "MIT",
+  "name": "apollo-server-integration-next",
+  "peerDependencies": {
+    "@apollo/server": "^4.0.1",
+    "next": "^12.3.1"
+  },
+  "repository": "https://github.com/martinnabhan/apollo-server-integration-next",
+  "scripts": {
+    "build": "wireit",
+    "check": "wireit",
+    "check:eslint": "wireit",
+    "check:prettier": "wireit",
+    "check:tsc": "wireit",
+    "fix": "wireit",
+    "fix:eslint": "wireit",
+    "fix:prettier": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc",
+      "dependencies": [
+        "check:eslint",
+        "check:prettier"
+      ]
+    },
+    "check": {
+      "dependencies": [
+        "check:eslint",
+        "check:prettier",
+        "check:tsc"
+      ]
+    },
+    "check:eslint": {
+      "command": "eslint --ignore-path .prettierignore $(git diff --diff-filter d --name-only HEAD~1 | grep -E '\\.(js|ts)$' | xargs)"
+    },
+    "check:prettier": {
+      "command": "prettier --check $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+    },
+    "check:tsc": {
+      "command": "tsc --noEmit"
+    },
+    "fix": {
+      "dependencies": [
+        "fix:eslint",
+        "fix:prettier"
+      ]
+    },
+    "fix:eslint": {
+      "command": "eslint --fix --ignore-path .prettierignore $(git diff --diff-filter d --name-only HEAD~1 | grep -E '\\.(js|ts)$' | xargs)"
+    },
+    "fix:prettier": {
+      "command": "prettier --write $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.next/
+.wireit/
+dist/
+
+.gitignore
+.prettierignore
+package-lock.json
+tsconfig.buildinfo
