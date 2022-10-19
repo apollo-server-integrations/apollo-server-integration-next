@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "extends": "../../tsconfig.json"
+}
