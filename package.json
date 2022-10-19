@@ -31,6 +31,7 @@
     "dist/**/*"
   ],
   "license": "MIT",
+  "main": "dist/index.js",
   "name": "apollo-server-integration-next",
   "peerDependencies": {
     "@apollo/server": "^4.0.1",
@@ -47,12 +48,17 @@
     "fix:eslint": "wireit",
     "fix:prettier": "wireit"
   },
+  "types": "dist/index.d.ts",
+  "version": "1.0.0",
   "wireit": {
     "build": {
       "command": "tsc",
       "dependencies": [
         "check:eslint",
         "check:prettier"
+      ],
+      "output": [
+        "./dist/**/*"
       ]
     },
     "check": {

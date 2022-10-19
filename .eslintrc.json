@@ -11,7 +11,16 @@
   "rules": {
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
-    "import/order": ["error", { "alphabetize": { "order": "asc" }, "groups": [], "newlines-between": "never" }],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "groups": [],
+        "newlines-between": "never"
+      }
+    ],
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-autofocus": "off",
@@ -19,7 +28,12 @@
     "no-restricted-exports": "off",
     "no-restricted-syntax": "off",
     "sort-keys": "error",
-    "sort-imports": ["error", { "ignoreDeclarationSort": true }]
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

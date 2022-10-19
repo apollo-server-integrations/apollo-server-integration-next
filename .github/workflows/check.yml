@@ -1,10 +1,5 @@
-name: Check code
-
 env:
   WIREIT_FAILURES: kill
-
-on:
-  - push
 
 jobs:
   check:
@@ -20,3 +15,9 @@ jobs:
       - uses: google/wireit@setup-github-actions-caching/v1
       - run: npm ci
       - run: npm run check
+
+on:
+  push:
+    branches:
+      - 'bugfix/**'
+      - 'feature/**'
