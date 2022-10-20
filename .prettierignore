@@ -1,4 +1,5 @@
 .next/
+.vercel
 .wireit/
 dist/
 
