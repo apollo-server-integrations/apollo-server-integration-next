@@ -6,7 +6,6 @@ import { parse } from 'url';
 
 interface Options<Context extends BaseContext> {
   context?: ContextFunction<Parameters<NextApiHandler>, Context>;
-  started?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
