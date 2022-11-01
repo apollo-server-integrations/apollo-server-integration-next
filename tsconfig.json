@@ -5,19 +5,13 @@
     "declaration": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "module": "commonjs",
-    "moduleResolution": "node",
     "outDir": "./dist",
     "paths": {
-      "@apollo-server-integration-next/*": ["./packages/*"]
+      "@apollo-server-integration-next/*": ["./src/*"]
     },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "strict": true,
     "target": "es5"
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.d.ts", "**/*.ts"]
+  "include": ["src"]
 }

@@ -8,8 +8,6 @@ interface Options<Context extends BaseContext> {
   context?: ContextFunction<Parameters<NextApiHandler>, Context>;
 }
 
-let started = false;
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultContext: ContextFunction<[], any> = async () => ({});
 
@@ -25,13 +23,11 @@ function startServerAndCreateNextHandler<Context extends BaseContext>(
   server: ApolloServer<Context>,
   options?: Options<Context>,
 ) {
-  if (!started) {
-    server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
-    started = true;
-  }
+  server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
+
+  const contextFunction = options?.context || defaultContext;
 
   const handler: NextApiHandler = async (req, res) => {
-    const contextFunction = options?.context || defaultContext;
     const headers = new HeaderMap();
 
     for (const [key, value] of Object.entries(req.headers)) {
