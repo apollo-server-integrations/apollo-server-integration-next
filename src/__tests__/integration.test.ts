@@ -35,6 +35,7 @@ describe('nextHandler', () => {
       };
     },
     {
+      noIncrementalDelivery: true,
       serverIsStartedInBackground: true,
     },
   );
