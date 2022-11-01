@@ -30,6 +30,5 @@ jobs:
 
 on:
   push:
-    branches:
-      - 'bugfix/**'
-      - 'feature/**'
+    branches-ignore:
+      - main
