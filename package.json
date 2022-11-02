@@ -6,6 +6,8 @@
     "@apollo/server-integration-testsuite": "4.0.4",
     "@types/jest": "^29.2.0",
     "@types/node": "18.11.2",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
     "@typescript-eslint/eslint-plugin": "5.40.1",
     "@typescript-eslint/parser": "5.40.1",
     "babel-plugin-tsconfig-paths-module-resolver": "^1.0.3",
