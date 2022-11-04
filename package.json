@@ -2,8 +2,8 @@
   "author": "Martin Nabhan",
   "description": "An Apollo Server integration for use with Next.js",
   "devDependencies": {
-    "@apollo/server": "4.0.4",
-    "@apollo/server-integration-testsuite": "4.0.4",
+    "@apollo/server": "4.1.1",
+    "@apollo/server-integration-testsuite": "4.1.1",
     "@types/jest": "^29.2.0",
     "@types/node": "18.11.2",
     "@types/react": "18.0.21",
