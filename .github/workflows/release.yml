@@ -10,8 +10,8 @@ jobs:
           node-version: 16
           cache: 'npm'
       - run: npm ci
-      - uses: changesets/action@v1
       - uses: google/wireit@setup-github-actions-caching/v1
+      - uses: changesets/action@v1
         with:
           publish: npm run publish
         env:
