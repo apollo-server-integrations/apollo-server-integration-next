@@ -1,0 +1,34 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:base',
+    ':pinOnlyDevDependencies',
+    ':prNotPending',
+    ':rebaseStalePrs',
+    ':updateNotScheduled',
+    ':automergeDigest',
+    ':automergeMinor',
+    // group major jest updates
+    'group:jestMonorepo',
+    'group:jestPlusTSJest',
+    'group:jestPlusTypes',
+  ],
+  schedule: 'every weekend',
+  packageRules: [
+    // Bunch up all non-major dependencies into a single PR.  In the common case
+    // where the upgrades apply cleanly, this causes less noise and is resolved
+    // faster than starting a bunch of upgrades in parallel for what may turn
+    // out to be a suite of related packages all released at once.
+    {
+      groupName: 'all non-major dependencies',
+      matchUpdateTypes: ['patch', 'minor'],
+      groupSlug: 'all-minor-patch',
+    },
+    // We need to support Node v14, so we don't allow ourselves to use type
+    // definitions that would let us write >v14-specific code.
+    {
+      matchPackageNames: ['@types/node'],
+      allowedVersions: '14.x',
+    },
+  ],
+}
