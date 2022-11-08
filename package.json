@@ -51,6 +51,7 @@
     "fix": "wireit",
     "fix:eslint": "wireit",
     "fix:prettier": "wireit",
+    "publish": "wireit",
     "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
