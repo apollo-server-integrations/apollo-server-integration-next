@@ -4,6 +4,8 @@
   "devDependencies": {
     "@apollo/server": "4.0.4",
     "@apollo/server-integration-testsuite": "4.0.4",
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.2",
     "@types/jest": "^29.2.0",
     "@types/node": "14.18.33",
     "@types/react": "18.0.21",
@@ -33,15 +35,16 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "name": "apollo-server-integration-next",
+  "name": "@as-integrations/next",
   "peerDependencies": {
     "@apollo/server": "^4.0.0",
     "next": "^12.3.0"
   },
-  "repository": "https://github.com/martinnabhan/apollo-server-integration-next",
+  "repository": "https://github.com/apollo-server-integrations/apollo-server-integration-next",
   "scripts": {
     "build": "wireit",
     "check": "wireit",
+    "check:changeset": "changeset status --since=origin/main",
     "check:eslint": "wireit",
     "check:prettier": "wireit",
     "check:tsc": "wireit",
@@ -51,7 +54,7 @@
     "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "wireit": {
     "build": {
       "command": "tsc -p tsconfig.build.json",
@@ -65,6 +68,7 @@
     },
     "check": {
       "dependencies": [
+        "check:changeset",
         "check:eslint",
         "check:prettier",
         "check:tsc"
@@ -90,6 +94,12 @@
     },
     "fix:prettier": {
       "command": "prettier --write $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+    },
+    "publish": {
+      "command": "changeset publish",
+      "dependencies": [
+        "build"
+      ]
     }
   }
 }

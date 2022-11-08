@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.2.0/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "apollo-server-integrations/apollo-server-integration-next" }
+  ],
+  "commit": false,
+  "updateInternalDependencies": "patch"
+}
