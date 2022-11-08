@@ -54,7 +54,7 @@
     "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "wireit": {
     "build": {
       "command": "tsc -p tsconfig.build.json",
