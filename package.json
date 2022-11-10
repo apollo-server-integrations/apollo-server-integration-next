@@ -50,7 +50,7 @@
     "fix": "wireit",
     "fix:eslint": "wireit",
     "fix:prettier": "wireit",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "publish": "changeset publish",
     "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
