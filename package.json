@@ -50,7 +50,8 @@
     "fix": "wireit",
     "fix:eslint": "wireit",
     "fix:prettier": "wireit",
-    "publish": "wireit",
+    "prepack": "npm run build",
+    "publish:changeset": "changeset publish",
     "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
@@ -94,12 +95,6 @@
     },
     "fix:prettier": {
       "command": "prettier --write $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
-    },
-    "publish": {
-      "command": "changeset publish",
-      "dependencies": [
-        "build"
-      ]
     }
   }
 }

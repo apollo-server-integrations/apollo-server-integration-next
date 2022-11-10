@@ -13,7 +13,7 @@ jobs:
       - uses: google/wireit@setup-github-actions-caching/v1
       - uses: changesets/action@v1
         with:
-          publish: npm run publish
+          publish: npm run publish:changeset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
