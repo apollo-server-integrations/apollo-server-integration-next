@@ -43,7 +43,7 @@
   "scripts": {
     "build": "wireit",
     "check": "wireit",
-    "check:changeset": "BRANCH=$(git rev-parse --abbrev-ref HEAD); if [ $BRANCH != changeset-release/* ] && [ $BRANCH != renovate/* ]; then changeset status --since=origin/main; fi;",
+    "check:changeset": "BRANCH=$(git rev-parse --abbrev-ref HEAD); if [ \"${BRANCH:0:18}\" != changeset-release/ ] && [ \"${BRANCH:0:9}\" != renovate/ ]; then changeset status --since=origin/main; fi;",
     "check:eslint": "wireit",
     "check:prettier": "wireit",
     "check:tsc": "wireit",
