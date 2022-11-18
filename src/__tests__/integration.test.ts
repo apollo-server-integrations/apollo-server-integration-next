@@ -6,7 +6,11 @@ import {
 } from '@apollo/server-integration-testsuite';
 import { createServer } from 'http';
 import { AddressInfo } from 'net';
-import { apiResolver } from 'next/dist/server/api-utils/node';
+
+const { apiResolver } =
+  process.env.NEXT_VERSION === '12'
+    ? require('next12/dist/server/api-utils/node')
+    : require('next13/dist/server/api-utils/node');
 
 describe('nextHandler', () => {
   defineIntegrationTestSuite(

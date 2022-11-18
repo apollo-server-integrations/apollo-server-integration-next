@@ -21,7 +21,8 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-typescript-sort-keys": "2.1.0",
     "jest": "29.3.1",
-    "next": "13.0.3",
+    "next12": "npm:next@12.2.6",
+    "next13": "npm:next@13.0.3",
     "prettier": "2.7.1",
     "typescript": "4.9.3",
     "wireit": "0.7.3"
@@ -37,7 +38,7 @@
   "name": "@as-integrations/next",
   "peerDependencies": {
     "@apollo/server": "^4.0.0",
-    "next": "^12.3.0 || ^13.0.0"
+    "next": "^12.0.0 || ^13.0.0"
   },
   "repository": "https://github.com/apollo-server-integrations/apollo-server-integration-next",
   "scripts": {
@@ -52,7 +53,9 @@
     "fix:prettier": "wireit",
     "prepack": "npm run build",
     "publish:changeset": "changeset publish",
-    "test": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
+    "test": "wireit",
+    "test:next12": "NEXT_VERSION=12 npm run test:next13",
+    "test:next13": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
   "version": "1.1.0",
@@ -95,6 +98,12 @@
     },
     "fix:prettier": {
       "command": "prettier --write $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+    },
+    "test": {
+      "dependencies": [
+        "test:next12",
+        "test:next13"
+      ]
     }
   }
 }
