@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 1.2.0
+
+### Minor Changes
+
+- [#46](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/46) [`4ac6a2e`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/4ac6a2e788aee4b0d79534899c4febc8a5b4efbf) Thanks [@martinnabhan](https://github.com/martinnabhan)! - Change Next.js ^12.3.0 peer dependency to ^12.0.0
+
 ## 1.1.0
 
 ### Minor Changes
