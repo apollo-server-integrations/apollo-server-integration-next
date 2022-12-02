@@ -30,5 +30,10 @@
       matchPackageNames: ['@types/node'],
       allowedVersions: '14.x',
     },
+    // To make sure Renovate doesn't upgrade our Next.js 12 dependency to 13 we need to pin it.
+    {
+      matchPackageNames: ['next12'],
+      allowedVersions: '12.x',
+    },
   ],
 }
