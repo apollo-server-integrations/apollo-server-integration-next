@@ -4,8 +4,8 @@ An Apollo Server integration for use with Next.js.
 
 ## Getting started
 
-First create a Next.js API route by creating a file at for example `pages/api/graphql.ts`.  
-This route will be accessible at `/api/graphql`.
+First create a Next.js API route by creating a file at for example `pages/api/graphql.js`.  
+This API route will be accessible at `/api/graphql`.
 
 Next create an Apollo Server instance and pass it to `startServerAndCreateNextHandler`:
 
@@ -43,3 +43,77 @@ export default startServerAndCreateNextHandler(server, {
 ```
 
 The Next.js `req` and `res` objects are passed along to the context function.
+
+## Route Handlers (experimental)
+
+This integration has experimental support for Next.js' new Route Handlers feature.
+
+To use this integration with Route Handlers, first opt into Next.js' beta app directory by adding the following to `next.config.js`:
+
+```js
+module.exports = {
+  experimental: {
+    appDir: true,
+  },
+};
+```
+
+Then create a new file at for example `app/graphql/route.js`.  
+This file's route handlers will be accessible at `/graphql`.
+
+Next create an Apollo Server instance, pass it to `startServerAndCreateNextHandler` and finally pass the handler to both a GET and a POST route handler:
+
+```js
+import { startServerAndCreateNextHandler } from '@as-integrations/next';
+import { ApolloServer } from '@apollo/server';
+import { gql } from 'graphql-tag';
+
+const resolvers = {
+  Query: {
+    hello: () => 'world',
+  },
+};
+
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+const server = new ApolloServer({
+  resolvers,
+  typeDefs,
+});
+
+const handler = startServerAndCreateNextHandler(server);
+
+export async function GET(request) {
+  return handler(request);
+}
+
+export async function POST(request) {
+  return handler(request);
+}
+```
+
+## Typescript
+
+Since this integration supports both API Routes and Route Handlers you will have to specify the type of the incoming request object for the context function to receive the correct type signature:
+
+```ts
+import { NextApiRequest } from 'next';
+
+// req has the type NextApiRequest, and res has the type NextApiResponse
+const handler = startServerAndCreateNextHandler<NextApiRequest>(server, {
+  context: async (req, res) => ({ req, res }),
+});
+```
+
+If you're using route handlers you can use either `Response` or `NextResponse`:
+
+```ts
+import { NextRequest } from 'next/server';
+
+// req has the type NextRequest
+const handler = startServerAndCreateNextHandler<NextRequest>(server, { context: async req => ({ req }) });
+```
