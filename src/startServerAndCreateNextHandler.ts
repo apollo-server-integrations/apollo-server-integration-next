@@ -15,10 +15,10 @@ interface Options<Req extends HandlerRequest, Context extends BaseContext> {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultContext: ContextFunction<[], any> = async () => ({});
 
-function startServerAndCreateNextHandler<Req extends HandlerRequest, Context extends BaseContext = object>(
-  server: ApolloServer<Context>,
-  options?: Options<Req, Context>,
-) {
+function startServerAndCreateNextHandler<
+  Req extends HandlerRequest = NextApiRequest,
+  Context extends BaseContext = object,
+>(server: ApolloServer<Context>, options?: Options<Req, Context>) {
   server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
 
   const contextFunction = options?.context || defaultContext;

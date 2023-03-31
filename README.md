@@ -98,18 +98,7 @@ export async function POST(request) {
 
 ## Typescript
 
-Since this integration supports both API Routes and Route Handlers you will have to specify the type of the incoming request object for the context function to receive the correct type signature:
-
-```ts
-import { NextApiRequest } from 'next';
-
-// req has the type NextApiRequest, and res has the type NextApiResponse
-const handler = startServerAndCreateNextHandler<NextApiRequest>(server, {
-  context: async (req, res) => ({ req, res }),
-});
-```
-
-If you're using route handlers you can use either `Response` or `NextResponse`:
+When using this integration with Route Handlers you will have to specify the type of the incoming request object (`Response` or `NextResponse`) for the context function to receive the correct type signature:
 
 ```ts
 import { NextRequest } from 'next/server';
