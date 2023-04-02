@@ -1,4 +1,4 @@
-import { startServerAndCreateNextHandler } from '@apollo-server-integration-next/startServerAndCreateNextHandler';
+import { startServerAndCreateNextHandler } from '../startServerAndCreateNextHandler';
 import { ApolloServer, ApolloServerOptions, BaseContext } from '@apollo/server';
 import {
   CreateServerForIntegrationTestsOptions,

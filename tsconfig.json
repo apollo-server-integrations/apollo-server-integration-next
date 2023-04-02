@@ -7,9 +7,6 @@
     "esModuleInterop": true,
     "module": "commonjs",
     "outDir": "./dist",
-    "paths": {
-      "@apollo-server-integration-next/*": ["./src/*"]
-    },
     "strict": true,
     "target": "es5"
   },

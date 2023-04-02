@@ -1,67 +1,81 @@
-/* eslint-disable no-restricted-syntax */
-import { ApolloServer, BaseContext, ContextFunction, HeaderMap } from '@apollo/server';
-import type { WithRequired } from '@apollo/utils.withrequired';
-import { NextApiHandler } from 'next';
+import { getBody } from './lib/getBody';
+import { getHeaders } from './lib/getHeaders';
+import { isNextApiRequest } from './lib/isNextApiRequest';
+import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest } from 'next/server';
 import { parse } from 'url';
 
-interface Options<Context extends BaseContext> {
-  context?: ContextFunction<Parameters<NextApiHandler>, Context>;
+type HandlerRequest = NextApiRequest | NextRequest | Request;
+
+interface Options<Req extends HandlerRequest, Context extends BaseContext> {
+  context?: ContextFunction<[Req, Req extends NextApiRequest ? NextApiResponse : undefined], Context>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultContext: ContextFunction<[], any> = async () => ({});
 
-function startServerAndCreateNextHandler(
-  server: ApolloServer<BaseContext>,
-  options?: Options<BaseContext>,
-): NextApiHandler;
-function startServerAndCreateNextHandler<Context extends BaseContext>(
-  server: ApolloServer<Context>,
-  options: WithRequired<Options<Context>, 'context'>,
-): NextApiHandler;
-function startServerAndCreateNextHandler<Context extends BaseContext>(
-  server: ApolloServer<Context>,
-  options?: Options<Context>,
-) {
+function startServerAndCreateNextHandler<
+  Req extends HandlerRequest = NextApiRequest,
+  Context extends BaseContext = object,
+>(server: ApolloServer<Context>, options?: Options<Req, Context>) {
   server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
 
   const contextFunction = options?.context || defaultContext;
 
-  const handler: NextApiHandler = async (req, res) => {
-    const headers = new HeaderMap();
-
-    for (const [key, value] of Object.entries(req.headers)) {
-      if (typeof value === 'string') {
-        headers.set(key, value);
-      }
-    }
-
+  async function handler<HandlerReq extends NextApiRequest>(req: HandlerReq, res: NextApiResponse): Promise<unknown>;
+  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<Response>;
+  async function handler(req: HandlerRequest, res: NextApiResponse | undefined) {
     const httpGraphQLResponse = await server.executeHTTPGraphQLRequest({
-      context: () => contextFunction(req, res),
+      context: () => contextFunction(req as Req, res as Req extends NextApiRequest ? NextApiResponse : undefined),
       httpGraphQLRequest: {
-        body: req.body,
-        headers,
+        body: await getBody(req),
+        headers: getHeaders(req),
         method: req.method || 'POST',
         search: req.url ? parse(req.url).search || '' : '',
       },
     });
 
-    for (const [key, value] of httpGraphQLResponse.headers) {
-      res.setHeader(key, value);
-    }
-
-    res.statusCode = httpGraphQLResponse.status || 200;
-
-    if (httpGraphQLResponse.body.kind === 'complete') {
-      res.send(httpGraphQLResponse.body.string);
-    } else {
-      for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
-        res.write(chunk);
+    if (isNextApiRequest(req)) {
+      if (!res) {
+        throw new Error('API Routes require you to pass both the req and res object.');
       }
 
-      res.end();
+      for (const [key, value] of httpGraphQLResponse.headers) {
+        res.setHeader(key, value);
+      }
+
+      res.statusCode = httpGraphQLResponse.status || 200;
+
+      if (httpGraphQLResponse.body.kind === 'complete') {
+        res.send(httpGraphQLResponse.body.string);
+      } else {
+        for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
+          res.write(chunk);
+        }
+      }
+
+      return res.end();
     }
-  };
+
+    const body = [];
+
+    if (httpGraphQLResponse.body.kind === 'complete') {
+      body.push(httpGraphQLResponse.body.string);
+    } else {
+      for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
+        body.push(chunk);
+      }
+    }
+
+    const headers: Record<string, string> = {};
+
+    for (const [key, value] of httpGraphQLResponse.headers) {
+      headers[key] = value;
+    }
+
+    return new Response(body.join(''), { headers, status: httpGraphQLResponse.status || 200 });
+  }
 
   return handler;
 }
