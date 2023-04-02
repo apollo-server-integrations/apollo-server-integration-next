@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 1.3.0
+
+### Minor Changes
+
+- [#84](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/84) [`d4c3ef5`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/d4c3ef5056c3e00d7ed487517f343161b4b3d74e) Thanks [@martinnabhan](https://github.com/martinnabhan)! - Added support for Next.js route handlers
+
 ## 1.2.0
 
 ### Minor Changes
