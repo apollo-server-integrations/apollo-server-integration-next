@@ -2,6 +2,7 @@
 dist/
 
 .gitignore
+.npmrc
 .prettierignore
 package-lock.json
 CODEOWNERS
