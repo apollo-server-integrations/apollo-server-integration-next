@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 2.0.0
+
+### Major Changes
+
+- [#106](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/106) [`4ef38e7`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/4ef38e77fa87893231ee913edb38f8ecdf5eca6c) Thanks [@martinnabhan](https://github.com/martinnabhan)! - Drop support for Node v14
+
 ## 1.3.0
 
 ### Minor Changes
