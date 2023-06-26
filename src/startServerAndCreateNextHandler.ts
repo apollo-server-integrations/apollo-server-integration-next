@@ -3,7 +3,7 @@ import { getHeaders } from './lib/getHeaders';
 import { isNextApiRequest } from './lib/isNextApiRequest';
 import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { parse } from 'url';
 
 type HandlerRequest = NextApiRequest | NextRequest | Request;
@@ -25,7 +25,7 @@ function startServerAndCreateNextHandler<
   const contextFunction = options?.context || defaultContext;
 
   async function handler<HandlerReq extends NextApiRequest>(req: HandlerReq, res: NextApiResponse): Promise<unknown>;
-  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<ResponseBody>;
+  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<NextResponse<ResponseBody>>;
   async function handler(req: HandlerRequest, res: NextApiResponse | undefined) {
     const httpGraphQLResponse = await server.executeHTTPGraphQLRequest({
       context: () => contextFunction(req as Req, res as Req extends NextApiRequest ? NextApiResponse : undefined),
