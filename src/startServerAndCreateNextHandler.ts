@@ -17,6 +17,7 @@ const defaultContext: ContextFunction<[], any> = async () => ({});
 
 function startServerAndCreateNextHandler<
   Req extends HandlerRequest = NextApiRequest,
+  ResponseBody = unknown,
   Context extends BaseContext = object,
 >(server: ApolloServer<Context>, options?: Options<Req, Context>) {
   server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
@@ -24,7 +25,7 @@ function startServerAndCreateNextHandler<
   const contextFunction = options?.context || defaultContext;
 
   async function handler<HandlerReq extends NextApiRequest>(req: HandlerReq, res: NextApiResponse): Promise<unknown>;
-  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<Response>;
+  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<ResponseBody>;
   async function handler(req: HandlerRequest, res: NextApiResponse | undefined) {
     const httpGraphQLResponse = await server.executeHTTPGraphQLRequest({
       context: () => contextFunction(req as Req, res as Req extends NextApiRequest ? NextApiResponse : undefined),
