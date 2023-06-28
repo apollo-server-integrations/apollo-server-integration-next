@@ -55,7 +55,8 @@ function startServerAndCreateNextHandler<
         }
       }
 
-      return res.end();
+      res.end();
+      return;
     }
 
     const body = [];
