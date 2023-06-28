@@ -75,6 +75,7 @@ function startServerAndCreateNextHandler<
       headers[key] = value;
     }
 
+    // eslint-disable-next-line consistent-return
     return new Response(body.join(''), { headers, status: httpGraphQLResponse.status || 200 });
   }
 
