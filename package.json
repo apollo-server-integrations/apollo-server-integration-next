@@ -59,7 +59,7 @@
     "test:next13": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
   },
   "types": "dist/index.d.ts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "wireit": {
     "build": {
       "command": "tsc -p tsconfig.build.json",

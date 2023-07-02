@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 2.0.1
+
+### Patch Changes
+
+- [#123](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/123) [`23aa06f`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/23aa06f648243907e9790876d6afa3caa51b372f) Thanks [@simonkberg](https://github.com/simonkberg)! - Fix 'API handler should not return a value, received object.' by returning void for API routes
+
 ## 2.0.0
 
 ### Major Changes
