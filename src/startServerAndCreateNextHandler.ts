@@ -3,7 +3,7 @@ import { getHeaders } from './lib/getHeaders';
 import { isNextApiRequest } from './lib/isNextApiRequest';
 import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { parse } from 'url';
 
 type HandlerRequest = NextApiRequest | NextRequest | Request;
@@ -24,8 +24,11 @@ function startServerAndCreateNextHandler<
   const contextFunction = options?.context || defaultContext;
 
   async function handler<HandlerReq extends NextApiRequest>(req: HandlerReq, res: NextApiResponse): Promise<unknown>;
-  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<Response>;
-  async function handler(req: HandlerRequest, res: NextApiResponse | undefined) {
+  async function handler<HandlerReq extends NextRequest | Request>(
+    req: HandlerReq,
+    res?: NextResponse,
+  ): Promise<NextResponse | Response>;
+  async function handler(req: HandlerRequest, res: NextApiResponse | NextResponse | undefined) {
     const httpGraphQLResponse = await server.executeHTTPGraphQLRequest({
       context: () => contextFunction(req as Req, res as Req extends NextApiRequest ? NextApiResponse : undefined),
       httpGraphQLRequest: {
@@ -37,25 +40,26 @@ function startServerAndCreateNextHandler<
     });
 
     if (isNextApiRequest(req)) {
-      if (!res) {
+      const nextApiRes = res as unknown as NextApiResponse;
+      if (!nextApiRes) {
         throw new Error('API Routes require you to pass both the req and res object.');
       }
 
       for (const [key, value] of httpGraphQLResponse.headers) {
-        res.setHeader(key, value);
+        nextApiRes.setHeader(key, value);
       }
 
-      res.statusCode = httpGraphQLResponse.status || 200;
+      nextApiRes.statusCode = httpGraphQLResponse.status || 200;
 
       if (httpGraphQLResponse.body.kind === 'complete') {
-        res.send(httpGraphQLResponse.body.string);
+        nextApiRes.send(httpGraphQLResponse.body.string);
       } else {
         for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
-          res.write(chunk);
+          nextApiRes.write(chunk);
         }
       }
 
-      res.end();
+      nextApiRes.end();
       return;
     }
 
@@ -69,6 +73,19 @@ function startServerAndCreateNextHandler<
       }
     }
 
+    const nextRes: NextResponse | undefined = res as unknown as NextResponse; // for NextJs v13 app folder, NextResponse type
+    if (nextRes?.headers?.set) {
+      for (const [key, value] of httpGraphQLResponse.headers) {
+        nextRes.headers.set(key, value);
+      }
+
+      // eslint-disable-next-line consistent-return
+      return new NextResponse(body.join(''), {
+        headers: nextRes.headers,
+        status: httpGraphQLResponse.status || 200,
+      });
+    }
+
     const headers: Record<string, string> = {};
 
     for (const [key, value] of httpGraphQLResponse.headers) {
@@ -76,7 +93,10 @@ function startServerAndCreateNextHandler<
     }
 
     // eslint-disable-next-line consistent-return
-    return new Response(body.join(''), { headers, status: httpGraphQLResponse.status || 200 });
+    return new Response(body.join(''), {
+      headers,
+      status: httpGraphQLResponse.status || 200,
+    });
   }
 
   return handler;

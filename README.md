@@ -101,8 +101,29 @@ export async function POST(request) {
 When using this integration with Route Handlers you will have to specify the type of the incoming request object (`Response` or `NextResponse`) for the context function to receive the correct type signature:
 
 ```ts
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 // req has the type NextRequest
-const handler = startServerAndCreateNextHandler<NextRequest>(server, { context: async req => ({ req }) });
+const handler = startServerAndCreateNextHandler<NextRequest>(server, { context: async (req, res) => ({ req, res }) });
+
+export async function GET(request: NextRequest) {
+  return handler(request, new NextResponse());
+}
+
+export async function POST(request: NextRequest) {
+  return handler(request, new NextResponse());
+}
+```
+
+Use `res` context in the `resolve` to set a cookie
+
+```ts
+const resolve = async (_, { input }, { req, res }) => {
+  // ...
+  res.cookies.set('icSessionJwt', jwtToken, {
+    maxAge,
+    sameSite: 'strict',
+  });
+  // ...
+};
 ```
