@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 2.0.2
+
+### Patch Changes
+
+- [#130](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/130) [`ad66ef7`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/ad66ef7ee9a24539011e69342d23210cb09f009a) Thanks [@Thinkscape](https://github.com/Thinkscape)! - Update README.md in line with Next 13.4+
+
 ## 2.0.1
 
 ### Patch Changes
