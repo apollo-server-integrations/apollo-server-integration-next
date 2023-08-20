@@ -44,24 +44,17 @@ export default startServerAndCreateNextHandler(server, {
 
 The Next.js `req` and `res` objects are passed along to the context function.
 
-## Route Handlers (experimental)
+## App Router (Route Handlers)
 
-This integration has experimental support for Next.js' new Route Handlers feature.
+This integration has experimental support for [Next.js' App Router](https://nextjs.org/docs/app/building-your-application/routing/router-handlers), which is now the stable and default project structure for Next.js.
 
-To use this integration with Route Handlers, first opt into Next.js' beta app directory by adding the following to `next.config.js`:
+Make sure you're on recent version of Next.js (13.4+), then create a new Route
+Handler file, for example at `app/api/graphql/route.js`.
 
-```js
-module.exports = {
-  experimental: {
-    appDir: true,
-  },
-};
-```
+This file's route handlers will be accessible at URI path `/api/graphql`.
 
-Then create a new file at for example `app/graphql/route.js`.  
-This file's route handlers will be accessible at `/graphql`.
-
-Next create an Apollo Server instance, pass it to `startServerAndCreateNextHandler` and finally pass the handler to both a GET and a POST route handler:
+Next create an Apollo Server instance, pass it to `startServerAndCreateNextHandler` and
+finally pass the handler to both a GET and a POST route handler:
 
 ```js
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
@@ -87,13 +80,7 @@ const server = new ApolloServer({
 
 const handler = startServerAndCreateNextHandler(server);
 
-export async function GET(request) {
-  return handler(request);
-}
-
-export async function POST(request) {
-  return handler(request);
-}
+export { handler as GET, handler as POST };
 ```
 
 ## Typescript
@@ -104,5 +91,7 @@ When using this integration with Route Handlers you will have to specify the typ
 import { NextRequest } from 'next/server';
 
 // req has the type NextRequest
-const handler = startServerAndCreateNextHandler<NextRequest>(server, { context: async req => ({ req }) });
+const handler = startServerAndCreateNextHandler<NextRequest>(server, {
+  context: async req => ({ req }),
+});
 ```
