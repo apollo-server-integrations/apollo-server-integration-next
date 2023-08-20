@@ -49,11 +49,11 @@ The Next.js `req` and `res` objects are passed along to the context function.
 This integration has experimental support for [Next.js' App Router](https://nextjs.org/docs/app/building-your-application/routing/router-handlers), which is now the stable and default project structure for Next.js.
 
 Make sure you're on recent version of Next.js (13.4+), then create a new Route
-Handler file, for example at `app/api/graphql/route.js`.  
+Handler file, for example at `app/api/graphql/route.js`.
 
 This file's route handlers will be accessible at URI path `/api/graphql`.
 
-Next create an Apollo Server instance, pass it to `startServerAndCreateNextHandler` and 
+Next create an Apollo Server instance, pass it to `startServerAndCreateNextHandler` and
 finally pass the handler to both a GET and a POST route handler:
 
 ```js
@@ -81,7 +81,6 @@ const server = new ApolloServer({
 const handler = startServerAndCreateNextHandler(server);
 
 export { handler as GET, handler as POST };
-
 ```
 
 ## Typescript
@@ -93,6 +92,6 @@ import { NextRequest } from 'next/server';
 
 // req has the type NextRequest
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
-  context: async req => ({ req })
+  context: async req => ({ req }),
 });
 ```
