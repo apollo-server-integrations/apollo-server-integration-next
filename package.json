@@ -2,16 +2,16 @@
   "author": "Martin Nabhan",
   "description": "An Apollo Server integration for use with Next.js",
   "devDependencies": {
-    "@apollo/server": "4.9.2",
-    "@apollo/server-integration-testsuite": "4.9.2",
+    "@apollo/server": "4.9.3",
+    "@apollo/server-integration-testsuite": "4.9.3",
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@types/jest": "29.5.4",
-    "@types/node": "16.18.46",
+    "@types/node": "16.18.48",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "6.4.1",
-    "@typescript-eslint/parser": "6.4.1",
+    "@typescript-eslint/eslint-plugin": "6.5.0",
+    "@typescript-eslint/parser": "6.5.0",
     "babel-plugin-tsconfig-paths-module-resolver": "1.0.4",
     "eslint": "8.48.0",
     "eslint-config-airbnb": "19.0.4",
@@ -23,9 +23,9 @@
     "next": "13.4.19",
     "next12": "npm:next@12.3.4",
     "next13": "npm:next@13.4.19",
-    "prettier": "3.0.2",
+    "prettier": "3.0.3",
     "typescript": "5.2.2",
-    "wireit": "0.10.0"
+    "wireit": "0.13.0"
   },
   "engines": {
     "node": ">=16"
