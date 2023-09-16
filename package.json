@@ -6,12 +6,12 @@
     "@apollo/server-integration-testsuite": "4.9.3",
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
-    "@types/jest": "29.5.4",
-    "@types/node": "16.18.50",
+    "@types/jest": "29.5.5",
+    "@types/node": "16.18.52",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "6.6.0",
-    "@typescript-eslint/parser": "6.6.0",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
     "babel-plugin-tsconfig-paths-module-resolver": "1.0.4",
     "eslint": "8.49.0",
     "eslint-config-airbnb": "19.0.4",
@@ -19,13 +19,13 @@
     "eslint-import-resolver-typescript": "3.6.0",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-jsx-a11y": "6.7.1",
-    "jest": "29.6.4",
+    "jest": "29.7.0",
     "next": "13.4.19",
     "next12": "npm:next@12.3.4",
     "next13": "npm:next@13.4.19",
     "prettier": "3.0.3",
     "typescript": "5.2.2",
-    "wireit": "0.13.0"
+    "wireit": "0.14.0"
   },
   "engines": {
     "node": ">=16"
