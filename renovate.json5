@@ -24,16 +24,24 @@
       matchUpdateTypes: ['patch', 'minor'],
       groupSlug: 'all-minor-patch',
     },
-    // We need to support Node v16, so we don't allow ourselves to use type
-    // definitions that would let us write >v16-specific code.
+    // We need to support Node v18, so we don't allow ourselves to use type
+    // definitions that would let us write >v18-specific code.
     {
       matchPackageNames: ['@types/node'],
-      allowedVersions: '16.x',
+      allowedVersions: '18.x',
     },
-    // To make sure Renovate doesn't upgrade our Next.js 12 dependency to 13 we need to pin it.
+    // To make sure Renovate doesn't upgrade our Next.js dependencies we need to pin them.
     {
       matchPackageNames: ['next12'],
       allowedVersions: '12.x',
+    },
+    {
+      matchPackageNames: ['next13'],
+      allowedVersions: '13.x',
+    },
+    {
+      matchPackageNames: ['next14'],
+      allowedVersions: '14.x',
     },
   ],
 }

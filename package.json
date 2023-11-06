@@ -7,8 +7,8 @@
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@types/jest": "29.5.7",
-    "@types/node": "16.18.60",
     "@types/react": "18.2.34",
+    "@types/node": "18.11.9",
     "@types/react-dom": "18.2.14",
     "@typescript-eslint/eslint-plugin": "6.9.1",
     "@typescript-eslint/parser": "6.9.1",
@@ -20,15 +20,16 @@
     "eslint-plugin-import": "2.29.0",
     "eslint-plugin-jsx-a11y": "6.8.0",
     "jest": "29.7.0",
-    "next": "13.5.6",
+    "next": "14.0.1",
     "next12": "npm:next@12.3.4",
     "next13": "npm:next@13.5.6",
+    "next14": "npm:next@14.0.1",
     "prettier": "3.0.3",
     "typescript": "5.2.2",
     "wireit": "0.14.1"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "files": [
     "dist/**/*"
@@ -38,7 +39,7 @@
   "name": "@as-integrations/next",
   "peerDependencies": {
     "@apollo/server": "^4.0.0",
-    "next": "^12.0.0 || ^13.0.0"
+    "next": "^12.0.0 || ^13.0.0 || ^14.0.0"
   },
   "repository": "https://github.com/apollo-server-integrations/apollo-server-integration-next",
   "scripts": {
@@ -54,8 +55,10 @@
     "prepack": "npm run build",
     "publish:changeset": "changeset publish",
     "test": "wireit",
-    "test:next12": "NEXT_VERSION=12 npm run test:next13",
-    "test:next13": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest"
+    "test:next": "DEBUG_PRINT_LIMIT=2147483647 __NEXT_TEST_MODE=jest jest",
+    "test:next12": "NEXT_VERSION=12 npm run test:next",
+    "test:next13": "NEXT_VERSION=13 npm run test:next",
+    "test:next14": "NEXT_VERSION=14 npm run test:next"
   },
   "types": "dist/index.d.ts",
   "version": "2.0.2",
@@ -102,7 +105,8 @@
     "test": {
       "dependencies": [
         "test:next12",
-        "test:next13"
+        "test:next13",
+        "test:next14"
       ]
     }
   }
