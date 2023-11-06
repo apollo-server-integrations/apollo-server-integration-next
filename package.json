@@ -61,7 +61,7 @@
     "test:next14": "NEXT_VERSION=14 npm run test:next"
   },
   "types": "dist/index.d.ts",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "wireit": {
     "build": {
       "command": "tsc -p tsconfig.build.json",

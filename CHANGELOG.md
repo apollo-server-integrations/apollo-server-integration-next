@@ -1,5 +1,14 @@
 # @as-integrations/next
 
+## 3.0.0
+
+### Major Changes
+
+- [#160](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/160) [`3a5137a`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/3a5137a7f04ae9bc0a2b868060de041d8b218872) Thanks [@arakelovd](https://github.com/arakelovd)! - Add support for Next.js 14 and drop support for Node.js 16
+
+  Next.js 14 drops support for Node.js 16,
+  which is why we're also dropping support for Node.js 16.
+
 ## 2.0.2
 
 ### Patch Changes
