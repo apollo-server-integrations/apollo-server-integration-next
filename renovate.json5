@@ -30,6 +30,11 @@
       matchPackageNames: ['@types/node'],
       allowedVersions: '18.x',
     },
+    // eslint 9 introduces lots of breaking changes so we will pin eslint at 8.x for now.
+    {
+      allowedVersions: '8.x',
+      matchPackageNames: ['eslint'],
+    },
     // To make sure Renovate doesn't upgrade our Next.js dependencies we need to pin them.
     {
       matchPackageNames: ['next12'],
