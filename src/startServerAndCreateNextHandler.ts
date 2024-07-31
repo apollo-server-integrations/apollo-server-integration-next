@@ -4,6 +4,7 @@ import { isNextApiRequest } from './lib/isNextApiRequest';
 import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest } from 'next/server';
+import { Readable } from 'stream';
 import { parse } from 'url';
 
 type HandlerRequest = NextApiRequest | NextRequest | Request;
@@ -49,34 +50,38 @@ function startServerAndCreateNextHandler<
 
       if (httpGraphQLResponse.body.kind === 'complete') {
         res.send(httpGraphQLResponse.body.string);
+        res.end();
       } else {
-        for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
-          res.write(chunk);
-        }
+        res.send(Readable.from(httpGraphQLResponse.body.asyncIterator));
       }
 
-      res.end();
       return;
     }
 
-    const body = [];
-
-    if (httpGraphQLResponse.body.kind === 'complete') {
-      body.push(httpGraphQLResponse.body.string);
-    } else {
-      for await (const chunk of httpGraphQLResponse.body.asyncIterator) {
-        body.push(chunk);
-      }
-    }
-
     const headers: Record<string, string> = {};
-
     for (const [key, value] of httpGraphQLResponse.headers) {
       headers[key] = value;
     }
 
     // eslint-disable-next-line consistent-return
-    return new Response(body.join(''), { headers, status: httpGraphQLResponse.status || 200 });
+    return new Response(
+      httpGraphQLResponse.body.kind === 'complete'
+        ? httpGraphQLResponse.body.string
+        : new ReadableStream({
+            async pull(controller) {
+              if (httpGraphQLResponse.body.kind === 'chunked') {
+                const { value, done } = await httpGraphQLResponse.body.asyncIterator.next();
+
+                if (done) {
+                  controller.close();
+                } else {
+                  controller.enqueue(value);
+                }
+              }
+            },
+          }),
+      { headers, status: httpGraphQLResponse.status || 200 },
+    );
   }
 
   return handler;
