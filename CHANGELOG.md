@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 3.1.0
+
+### Minor Changes
+
+- [#204](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/204) [`e7b02be`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/e7b02bef6a50fc046c049af6ab172f28ea979214) Thanks [@jer-k](https://github.com/jer-k)! - Add support for incremental delivery
+
 ## 3.0.0
 
 ### Major Changes
