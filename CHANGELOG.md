@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 3.2.0
+
+### Minor Changes
+
+- [#224](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/224) [`b9c0ed7`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/b9c0ed70456900754f2f29a75587a338ab9dadf7) Thanks [@renovate](https://github.com/apps/renovate)! - Add support for Next.js 15
+
 ## 3.1.0
 
 ### Minor Changes
