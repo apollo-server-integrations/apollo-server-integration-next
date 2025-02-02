@@ -11,8 +11,8 @@
     "@types/node": "18.19.74",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "@typescript-eslint/eslint-plugin": "8.21.0",
-    "@typescript-eslint/parser": "8.21.0",
+    "@typescript-eslint/eslint-plugin": "8.22.0",
+    "@typescript-eslint/parser": "8.22.0",
     "babel-plugin-tsconfig-paths-module-resolver": "1.0.4",
     "eslint": "8.57.1",
     "eslint-config-airbnb": "19.0.4",
@@ -28,7 +28,7 @@
     "next15": "npm:next@15.1.6",
     "prettier": "3.4.2",
     "typescript": "5.7.3",
-    "wireit": "0.14.9"
+    "wireit": "0.14.10"
   },
   "engines": {
     "node": ">=18"
