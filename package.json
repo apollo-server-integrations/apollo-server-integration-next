@@ -9,7 +9,7 @@
     "@changesets/cli": "2.27.12",
     "@types/jest": "29.5.14",
     "@types/node": "18.19.76",
-    "@types/react": "19.0.8",
+    "@types/react": "19.0.9",
     "@types/react-dom": "19.0.3",
     "@typescript-eslint/eslint-plugin": "8.24.0",
     "@typescript-eslint/parser": "8.24.0",
