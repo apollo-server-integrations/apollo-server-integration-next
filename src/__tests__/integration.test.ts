@@ -38,9 +38,17 @@ describe('nextHandler', () => {
       const server = new ApolloServer(serverOptions);
       const handler = startServerAndCreateNextHandler(server, testOptions);
       const apiResolver = await getApiResolver();
-      type ApiContext = Omit<Parameters<typeof apiResolver>[4], 'revalidate'>;
 
-      const httpServer = createServer((req, res) => apiResolver(req, res, '', handler, {} as ApiContext, false));
+      const httpServer = createServer((req, res) =>
+        apiResolver(
+          req,
+          res,
+          '',
+          handler,
+          { dev: false, previewModeEncryptionKey: '', previewModeId: '', previewModeSigningKey: '' },
+          false,
+        ),
+      );
 
       await new Promise<void>(resolve => {
         httpServer.listen({ port: 0 }, resolve);
