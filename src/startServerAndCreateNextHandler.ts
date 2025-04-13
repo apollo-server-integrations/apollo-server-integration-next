@@ -1,6 +1,7 @@
 import { getBody } from './lib/getBody';
 import { getHeaders } from './lib/getHeaders';
 import { isNextApiRequest } from './lib/isNextApiRequest';
+// import { isNextApiResponse } from './lib/isNextApiResponse';
 import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest } from 'next/server';
@@ -25,8 +26,11 @@ function startServerAndCreateNextHandler<
   const contextFunction = options?.context || defaultContext;
 
   async function handler<HandlerReq extends NextApiRequest>(req: HandlerReq, res: NextApiResponse): Promise<unknown>;
-  async function handler<HandlerReq extends NextRequest | Request>(req: HandlerReq, res?: undefined): Promise<Response>;
-  async function handler(req: HandlerRequest, res: NextApiResponse | undefined) {
+  async function handler<HandlerReq extends NextRequest | Request>(
+    req: HandlerReq,
+    routeContext: undefined /* unknown */,
+  ): Promise<Response>;
+  async function handler(req: HandlerRequest, res: NextApiResponse | undefined /* unknown */) {
     const httpGraphQLResponse = await server.executeHTTPGraphQLRequest({
       context: () => contextFunction(req as Req, res as Req extends NextApiRequest ? NextApiResponse : undefined),
       httpGraphQLRequest: {
@@ -38,7 +42,7 @@ function startServerAndCreateNextHandler<
     });
 
     if (isNextApiRequest(req)) {
-      if (!res) {
+      if (!res /* || !isNextApiResponse(res) */) {
         throw new Error('API Routes require you to pass both the req and res object.');
       }
 
