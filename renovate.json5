@@ -35,6 +35,16 @@
       allowedVersions: '8.x',
       matchPackageNames: ['eslint'],
     },
+    // @apollo/server-integration-testsuite doesn't support Jest 30 yet.
+    {
+      allowedVersions: '29.5.14',
+      matchPackageNames: ['@types/jest'],
+    },
+    {
+      allowedVersions: '29.7.0',
+      matchPackageNames: ['jest'],
+    },
+
     // To make sure Renovate doesn't upgrade our Next.js dependencies we need to pin them.
     {
       matchPackageNames: ['next12'],
