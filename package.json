@@ -2,8 +2,8 @@
   "author": "Martin Nabhan",
   "description": "An Apollo Server integration for use with Next.js",
   "devDependencies": {
-    "@apollo/server": "4.12.2",
-    "@apollo/server-integration-testsuite": "4.12.2",
+    "@apollo/server": "5.0.0",
+    "@apollo/server-integration-testsuite": "5.0.0",
     "@babel/core": "7.28.0",
     "@changesets/changelog-github": "0.5.1",
     "@changesets/cli": "2.29.5",
@@ -40,7 +40,7 @@
   "main": "dist/index.js",
   "name": "@as-integrations/next",
   "peerDependencies": {
-    "@apollo/server": "^4.0.0",
+    "@apollo/server": "^4.0.0 || ^5.0.0",
     "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
   },
   "repository": "https://github.com/apollo-server-integrations/apollo-server-integration-next",
