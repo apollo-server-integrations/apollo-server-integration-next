@@ -45,7 +45,7 @@ describe('nextHandler', () => {
           res,
           '',
           handler,
-          { dev: false, previewModeEncryptionKey: '', previewModeId: '', previewModeSigningKey: '' },
+          { dev: false, previewModeEncryptionKey: '', previewModeId: '', projectDir: '', previewModeSigningKey: '' },
           false,
         ),
       );
