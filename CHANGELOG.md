@@ -1,5 +1,14 @@
 # @as-integrations/next
 
+## 4.0.0
+
+### Major Changes
+
+- [#264](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/264) [`2572fca`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/2572fca368777ad03ebc6b739097080d02aa15d4) Thanks [@karl-run](https://github.com/karl-run)! - Add support for Apollo Server 5
+
+  This release drops support for Apollo Server 4, and since Apollo Server 5 drops support for Node.js 18
+  we're also dropping support for Node.js 18.
+
 ## 3.2.0
 
 ### Minor Changes
