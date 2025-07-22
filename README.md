@@ -2,6 +2,11 @@
 
 An Apollo Server integration for use with Next.js.
 
+## Versions
+
+- If you're using Apollo Server 4.x use version 3.x
+- If you're using Apollo Server 5.x use the latest version
+
 ## Getting started
 
 First create a Next.js API route by creating a file at for example `pages/api/graphql.js`.  
