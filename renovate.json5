@@ -24,11 +24,11 @@
       matchUpdateTypes: ['patch', 'minor'],
       groupSlug: 'all-minor-patch',
     },
-    // We need to support Node v18, so we don't allow ourselves to use type
-    // definitions that would let us write >v18-specific code.
+    // We need to support Node v20, so we don't allow ourselves to use type
+    // definitions that would let us write >v20-specific code.
     {
       matchPackageNames: ['@types/node'],
-      allowedVersions: '18.x',
+      allowedVersions: '20.x',
     },
     // eslint 9 introduces lots of breaking changes so we will pin eslint at 8.x for now.
     {
