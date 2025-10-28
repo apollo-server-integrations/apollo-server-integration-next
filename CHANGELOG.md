@@ -1,5 +1,11 @@
 # @as-integrations/next
 
+## 4.1.0
+
+### Minor Changes
+
+- [#288](https://github.com/apollo-server-integrations/apollo-server-integration-next/pull/288) [`87f9e0f`](https://github.com/apollo-server-integrations/apollo-server-integration-next/commit/87f9e0f7fa841f94690a8e60ba8f9cac0fa31993) Thanks [@martinnabhan](https://github.com/martinnabhan)! - Add support for Next.js 16
+
 ## 4.0.0
 
 ### Major Changes
