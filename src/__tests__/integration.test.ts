@@ -23,6 +23,9 @@ async function getApiResolver() {
     case '15':
       ({ apiResolver } = await import('next15/dist/server/api-utils/node/api-resolver'));
       break;
+    case '16':
+      ({ apiResolver } = await import('next16/dist/server/api-utils/node/api-resolver'));
+      break;
     default:
       throw new Error(
         'Next.js version not specified. Ensure the Next.js version is specified via the NEXT_VERSION environment variable.',

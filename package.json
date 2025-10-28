@@ -21,11 +21,12 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "jest": "29.7.0",
-    "next": "15.5.6",
+    "next": "16.0.0",
     "next12": "npm:next@12.3.7",
     "next13": "npm:next@13.5.11",
     "next14": "npm:next@14.2.33",
     "next15": "npm:next@15.5.6",
+    "next16": "npm:next@16.0.0",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
     "wireit": "0.14.12"
@@ -41,7 +42,7 @@
   "name": "@as-integrations/next",
   "peerDependencies": {
     "@apollo/server": "^5.0.0",
-    "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
+    "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
   },
   "repository": "https://github.com/apollo-server-integrations/apollo-server-integration-next",
   "scripts": {
@@ -61,7 +62,8 @@
     "test:next12": "NEXT_VERSION=12 npm run test:next",
     "test:next13": "NEXT_VERSION=13 npm run test:next",
     "test:next14": "NEXT_VERSION=14 npm run test:next",
-    "test:next15": "NEXT_VERSION=15 npm run test:next"
+    "test:next15": "NEXT_VERSION=15 npm run test:next",
+    "test:next16": "NEXT_VERSION=16 npm run test:next"
   },
   "types": "dist/index.d.ts",
   "version": "4.0.0",
@@ -85,10 +87,10 @@
       ]
     },
     "check:eslint": {
-      "command": "eslint --ignore-path .prettierignore $(git diff --diff-filter d --name-only HEAD~1 | grep -E '\\.(js|ts)$' | xargs)"
+      "command": "eslint --ignore-path .prettierignore ."
     },
     "check:prettier": {
-      "command": "prettier --check $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+      "command": "prettier --check ."
     },
     "check:tsc": {
       "command": "tsc --noEmit"
@@ -100,17 +102,18 @@
       ]
     },
     "fix:eslint": {
-      "command": "eslint --fix --ignore-path .prettierignore $(git diff --diff-filter d --name-only HEAD~1 | grep -E '\\.(js|ts)$' | xargs)"
+      "command": "eslint --fix --ignore-path .prettierignore ."
     },
     "fix:prettier": {
-      "command": "prettier --write $(git diff --diff-filter d --name-only HEAD~1 | xargs)"
+      "command": "prettier --write ."
     },
     "test": {
       "dependencies": [
         "test:next12",
         "test:next13",
         "test:next14",
-        "test:next15"
+        "test:next15",
+        "test:next16"
       ]
     }
   }
