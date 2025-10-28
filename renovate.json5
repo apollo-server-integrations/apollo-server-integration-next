@@ -51,5 +51,9 @@
       matchPackageNames: ['next15'],
       allowedVersions: '15.x',
     },
+    {
+      matchPackageNames: ['next16'],
+      allowedVersions: '16.x',
+    },
   ],
 }
