@@ -2,6 +2,20 @@ env:
   WIREIT_FAILURES: kill
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+      - uses: google/wireit@setup-github-actions-caching/v1
+      - run: npm ci
+      - run: npx next build
+
+    timeout-minutes: 10
+
   check:
     runs-on: ubuntu-latest
     steps:
@@ -19,6 +33,7 @@ jobs:
       - run: npm ci
 
       - run: npm run check
+
     timeout-minutes: 10
 
   test:
