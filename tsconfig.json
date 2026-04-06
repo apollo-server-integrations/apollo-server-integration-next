@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "baseUrl": ".",
     "declaration": true,
-    "downlevelIteration": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "outDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
+    "target": "es6",
+    "types": ["jest"]
   },
   "include": ["src"]
 }

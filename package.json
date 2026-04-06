@@ -28,7 +28,7 @@
     "next15": "npm:next@15.5.14",
     "next16": "npm:next@16.2.2",
     "prettier": "3.8.1",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "wireit": "0.14.12"
   },
   "engines": {
