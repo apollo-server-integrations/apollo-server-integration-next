@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "arrowParens": "avoid",
+  "printWidth": 120,
+  "singleQuote": true,
+  "sortImports": {
+    "groups": [["builtin", "external", "internal", "subpath", "parent", "sibling", "index", "style", "unknown"]],
+    "newlinesBetween": false
+  },
+  "sortPackageJson": false,
+  "ignorePatterns": [".wireit/", "dist/", ".gitignore", ".npmrc", "package-lock.json", "CODEOWNERS", "LICENSE"]
+}

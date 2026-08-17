@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "react", "jsx-a11y", "jest"],
+  "rules": {
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "no-console": "error",
+    "typescript/no-explicit-any": "error"
+  },
+  "overrides": [
+    {
+      "files": ["jest.config.js"],
+      "rules": {
+        "typescript/no-extraneous-class": "off"
+      }
+    }
+  ]
+}
