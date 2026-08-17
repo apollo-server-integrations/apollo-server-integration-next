@@ -31,6 +31,16 @@
     "typescript": "6.0.3",
     "wireit": "0.14.13"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": ">=10.9.0"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^22.11.0"
+    }
+  },
   "engines": {
     "node": ">=20"
   },

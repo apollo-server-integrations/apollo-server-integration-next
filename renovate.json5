@@ -20,8 +20,12 @@
       groupSlug: 'all-minor-patch',
     },
     {
-      matchPackageNames: ['@types/node', 'node'],
+      matchPackageNames: ['@types/node'],
       allowedVersions: '20.x',
+    },
+    {
+      matchPackageNames: ['node'],
+      allowedVersions: '^22.11.0',
     },
     {
       allowedVersions: '8.x',
