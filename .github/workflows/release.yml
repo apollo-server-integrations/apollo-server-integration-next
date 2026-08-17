@@ -21,7 +21,7 @@ jobs:
 
       - uses: changesets/action@v2.1.0
         with:
-          publish: npm run publish:changeset
+          publish-script: npm run publish:changeset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ''
