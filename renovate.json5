@@ -25,7 +25,7 @@
     },
     {
       matchPackageNames: ['node'],
-      allowedVersions: '^22.11.0',
+      allowedVersions: '^24.11.0',
     },
     {
       allowedVersions: '8.x',
