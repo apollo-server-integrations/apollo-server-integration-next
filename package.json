@@ -21,7 +21,7 @@
     "next16": "npm:next@16.3.1",
     "oxfmt": "0.61.0",
     "oxlint": "1.76.0",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "wireit": "0.14.13"
   },
   "devEngines": {
