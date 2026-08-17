@@ -5,7 +5,7 @@
     "@apollo/server": "5.5.1",
     "@apollo/server-integration-testsuite": "5.5.1",
     "@babel/core": "7.29.7",
-    "@changesets/changelog-github": "0.7.0",
+    "@changesets/changelog-github": "1.0.0",
     "@changesets/cli": "3.0.0",
     "@types/jest": "29.5.14",
     "@types/node": "20.19.43",
