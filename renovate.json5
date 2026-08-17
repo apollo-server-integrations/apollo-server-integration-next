@@ -40,23 +40,12 @@
       matchPackageNames: ['jest'],
     },
     {
-      matchPackageNames: ['next12'],
-      allowedVersions: '12.x',
+      // Keep these aliases unchanged so they continue testing compatibility with older Next.js versions.
+      matchDepNames: ['next12', 'next13', 'next14', 'next15'],
+      enabled: false,
     },
     {
-      matchPackageNames: ['next13'],
-      allowedVersions: '13.x',
-    },
-    {
-      matchPackageNames: ['next14'],
-      allowedVersions: '14.x',
-    },
-    {
-      matchPackageNames: ['next15'],
-      allowedVersions: '15.x',
-    },
-    {
-      matchPackageNames: ['next16'],
+      matchDepNames: ['next16'],
       allowedVersions: '16.x',
     },
   ],
