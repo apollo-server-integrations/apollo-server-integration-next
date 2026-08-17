@@ -11,15 +11,7 @@
     "@types/node": "20.19.43",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
-    "@typescript-eslint/eslint-plugin": "8.67.0",
-    "@typescript-eslint/parser": "8.67.0",
     "babel-plugin-tsconfig-paths-module-resolver": "1.0.4",
-    "eslint": "8.57.1",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-import-resolver-typescript": "4.4.5",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
     "jest": "29.7.0",
     "next": "16.3.1",
     "next12": "npm:next@12.3.7",
@@ -27,7 +19,8 @@
     "next14": "npm:next@14.2.35",
     "next15": "npm:next@15.5.23",
     "next16": "npm:next@16.3.1",
-    "prettier": "3.9.6",
+    "oxfmt": "0.61.0",
+    "oxlint": "1.76.0",
     "typescript": "6.0.3",
     "wireit": "0.14.13"
   },
@@ -62,12 +55,12 @@
     "build": "wireit",
     "check": "wireit",
     "check:changeset": "bash -c 'AUTHOR=$(git show -s --format=\"%ae\" HEAD); if [[ $AUTHOR != *\"renovate\"* ]] && [[ $AUTHOR != *\"github-actions\"* ]]; then changeset status --since=origin/main; fi'",
-    "check:eslint": "wireit",
-    "check:prettier": "wireit",
+    "check:oxfmt": "wireit",
+    "check:oxlint": "wireit",
     "check:tsc": "wireit",
     "fix": "wireit",
-    "fix:eslint": "wireit",
-    "fix:prettier": "wireit",
+    "fix:oxfmt": "wireit",
+    "fix:oxlint": "wireit",
     "prepack": "npm run build",
     "publish:changeset": "changeset publish",
     "test": "wireit",
@@ -84,8 +77,8 @@
     "build": {
       "command": "tsc -p tsconfig.build.json",
       "dependencies": [
-        "check:eslint",
-        "check:prettier"
+        "check:oxfmt",
+        "check:oxlint"
       ],
       "output": [
         "./dist/**/*"
@@ -94,31 +87,31 @@
     "check": {
       "dependencies": [
         "check:changeset",
-        "check:eslint",
-        "check:prettier",
+        "check:oxfmt",
+        "check:oxlint",
         "check:tsc"
       ]
     },
-    "check:eslint": {
-      "command": "eslint --ignore-path .prettierignore ."
+    "check:oxfmt": {
+      "command": "oxfmt --check"
     },
-    "check:prettier": {
-      "command": "prettier --check ."
+    "check:oxlint": {
+      "command": "oxlint"
     },
     "check:tsc": {
       "command": "tsc --noEmit"
     },
     "fix": {
       "dependencies": [
-        "fix:eslint",
-        "fix:prettier"
+        "fix:oxfmt",
+        "fix:oxlint"
       ]
     },
-    "fix:eslint": {
-      "command": "eslint --fix --ignore-path .prettierignore ."
+    "fix:oxfmt": {
+      "command": "oxfmt"
     },
-    "fix:prettier": {
-      "command": "prettier --write ."
+    "fix:oxlint": {
+      "command": "oxlint --fix"
     },
     "test": {
       "dependencies": [

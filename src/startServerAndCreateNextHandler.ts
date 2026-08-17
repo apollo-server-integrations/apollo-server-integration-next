@@ -13,7 +13,7 @@ interface Options<Req extends HandlerRequest, Context extends BaseContext> {
   context?: ContextFunction<[Req, Req extends NextApiRequest ? NextApiResponse : undefined], Context>;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 const defaultContext: ContextFunction<[], any> = async () => ({});
 
 function startServerAndCreateNextHandler<
@@ -63,7 +63,6 @@ function startServerAndCreateNextHandler<
       headers[key] = value;
     }
 
-    // eslint-disable-next-line consistent-return
     return new Response(
       httpGraphQLResponse.body.kind === 'complete'
         ? httpGraphQLResponse.body.string
