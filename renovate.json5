@@ -28,18 +28,6 @@
       allowedVersions: '^24.11.0',
     },
     {
-      allowedVersions: '8.x',
-      matchPackageNames: ['eslint'],
-    },
-    {
-      allowedVersions: '29.5.14',
-      matchPackageNames: ['@types/jest'],
-    },
-    {
-      allowedVersions: '29.7.0',
-      matchPackageNames: ['jest'],
-    },
-    {
       // Keep these aliases unchanged so they continue testing compatibility with older Next.js versions.
       matchDepNames: ['next12', 'next13', 'next14', 'next15'],
       enabled: false,

@@ -6,12 +6,11 @@
     "@apollo/server-integration-testsuite": "5.5.1",
     "@changesets/changelog-github": "1.0.0",
     "@changesets/cli": "3.0.0",
-    "@types/jest": "29.5.14",
+    "@types/jest": "30.0.0",
     "@types/node": "20.19.43",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
-    "babel-plugin-tsconfig-paths-module-resolver": "1.0.4",
-    "jest": "29.7.0",
+    "jest": "30.4.2",
     "next": "16.3.1",
     "next12": "npm:next@12.3.7",
     "next13": "npm:next@13.5.11",
@@ -121,5 +120,11 @@
         "test:next16"
       ]
     }
+  },
+  "allowScripts": {
+    "@apollo/protobufjs": false,
+    "fsevents": false,
+    "sharp": false,
+    "unrs-resolver": false
   }
 }
