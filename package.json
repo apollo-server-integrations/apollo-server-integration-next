@@ -19,8 +19,8 @@
     "next14": "npm:next@14.2.35",
     "next15": "npm:next@15.5.23",
     "next16": "npm:next@16.3.1",
-    "oxfmt": "0.61.0",
-    "oxlint": "1.76.0",
+    "oxfmt": "0.63.0",
+    "oxlint": "1.78.0",
     "typescript": "7.0.2",
     "wireit": "0.14.13"
   },
