@@ -19,7 +19,7 @@ jobs:
 
       - uses: google/wireit@setup-github-actions-caching/v2
 
-      - uses: changesets/action@v2.1.0
+      - uses: changesets/action@v2.1.1
         with:
           publish-script: npm run publish:changeset
         env:
