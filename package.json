@@ -11,16 +11,16 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "jest": "30.5.2",
-    "next": "16.3.6",
+    "next": "16.4.3",
     "next12": "npm:next@12.3.7",
     "next13": "npm:next@13.5.11",
     "next14": "npm:next@14.2.35",
     "next15": "npm:next@15.5.23",
-    "next16": "npm:next@16.3.6",
-    "oxfmt": "0.70.0",
-    "oxlint": "1.85.0",
+    "next16": "npm:next@16.4.3",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
     "typescript": "7.0.2",
-    "wireit": "0.14.13"
+    "wireit": "0.15.0"
   },
   "devEngines": {
     "packageManager": {
