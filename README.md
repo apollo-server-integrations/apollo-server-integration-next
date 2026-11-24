@@ -58,8 +58,8 @@ Next, create an Apollo Server instance, pass it to `startServerAndCreateNextHand
 finally export the handler both as GET and POST:
 
 ```js
-import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { gql } from 'graphql-tag';
 
 const resolvers = {
