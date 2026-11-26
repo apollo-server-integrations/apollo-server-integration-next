@@ -5,7 +5,6 @@ import { ApolloServer, BaseContext, ContextFunction } from '@apollo/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest } from 'next/server';
 import { Readable } from 'stream';
-import { parse } from 'url';
 
 type HandlerRequest = NextApiRequest | NextRequest | Request;
 
@@ -33,7 +32,7 @@ function startServerAndCreateNextHandler<
         body: await getBody(req),
         headers: getHeaders(req),
         method: req.method || 'POST',
-        search: req.url ? parse(req.url).search || '' : '',
+        search: req.url ? new URL(req.url, 'http://localhost').search : '',
       },
     });
 
