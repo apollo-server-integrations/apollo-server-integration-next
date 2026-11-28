@@ -4,7 +4,7 @@
   "devDependencies": {
     "@apollo/server": "5.5.2",
     "@apollo/server-integration-testsuite": "5.5.2",
-    "@changesets/changelog-github": "1.0.1",
+    "@changesets/changelog-github": "2.0.0",
     "@changesets/cli": "3.0.3",
     "@types/jest": "30.0.0",
     "@types/node": "20.19.43",
